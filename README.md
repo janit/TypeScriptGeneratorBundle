@@ -1,4 +1,4 @@
-TypeScript Interface Generator Bundle
+PHP Classes to TypeScript Interfaces Generator Bundle
 ======
 
 A Symfony bundle that adds a command to extract [TypeScript interface](https://www.typescriptlang.org/docs/handbook/interfaces.html) from PHP classes. Based on [the example from Martin Vseticka](https://stackoverflow.com/questions/33176888/export-php-interface-to-typescript-interface-or-vice-versa?answertab=votes#tab-top) this bundle uses [the PHP-Parser library](https://github.com/nikic/PHP-Parser) and annotations. This is currently very basic feature wise, but it does work.
@@ -78,6 +78,20 @@ interface Person {
   lastName: string,
   age: number
 }
+declare var Person: Person;
+
 ```
 
 If you provide another argument (`toDir`) you can change the target directory to something else.
+
+## Using TypeScript interfaces
+
+In your code editor you can have access to the generated interfaces by adding the following reference:
+
+```
+/// <reference path="./Person.d.ts" />
+```
+
+This way you can then access the structure bridged from your PHP classes in your TypeScript/JavaScript code as shown underneath:
+
+<img>
