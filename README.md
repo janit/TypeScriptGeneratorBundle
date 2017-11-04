@@ -72,7 +72,7 @@ $ php bin/console typescript:generate-interfaces src/
 
 This will generate the following file `typescript/Person.d.ts` with the following content:
 
-```JSON
+```
 interface Person {
   firstName: string,
   lastName: string,
