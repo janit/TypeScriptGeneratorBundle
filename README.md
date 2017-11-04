@@ -5,6 +5,8 @@ A Symfony bundle that adds a command to extract [TypeScript interface](https://w
 
 TypeScript is a superscript of JavaScript that adds strong typing and other features on top of JS. Automatically generated classes can be useful, for example when using a simple JSON API to communicate to a JavaScript client. This way you can get typing for your API responses in an easy way.
 
+This is currently very basic feature wise. It is also tightly coupled to the Symfony Framework, but could be extracted. Feel free to build on this or use as inspiration to build something completely different.
+
 ## Installation
 
 As a Symfony bundle you'll need to start by add the package to your project with composer:
@@ -62,3 +64,20 @@ class Person
 }
 ```
 
+Once this is in place you can run the command with the argument `src/`:
+
+```
+$ php bin/console typescript:generate-interfaces src/
+```
+
+This will generate the following file `typescript/Person.d.ts` with the following content:
+
+```JSON
+interface Person {
+  firstName: string,
+  lastName: string,
+  age: number
+}
+```
+
+If you provide another argument (`toDir`) you can change the target directory to something else.
