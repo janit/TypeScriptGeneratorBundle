@@ -1,11 +1,11 @@
 TypeScript Interface Generator Bundle
 ======
 
-A Symfony bundle that adds a command to extract [TypeScript interface](https://www.typescriptlang.org/docs/handbook/interfaces.html) from PHP classes. Based on [the example from Martin Vseticka](https://stackoverflow.com/questions/33176888/export-php-interface-to-typescript-interface-or-vice-versa?answertab=votes#tab-top) this bundle uses [the PHP-Parser library](https://github.com/nikic/PHP-Parser) and annotations.
+A Symfony bundle that adds a command to extract [TypeScript interface](https://www.typescriptlang.org/docs/handbook/interfaces.html) from PHP classes. Based on [the example from Martin Vseticka](https://stackoverflow.com/questions/33176888/export-php-interface-to-typescript-interface-or-vice-versa?answertab=votes#tab-top) this bundle uses [the PHP-Parser library](https://github.com/nikic/PHP-Parser) and annotations. This is currently very basic feature wise, but it does work.
 
 TypeScript is a superscript of JavaScript that adds strong typing and other features on top of JS. Automatically generated classes can be useful, for example when using a simple JSON API to communicate to a JavaScript client. This way you can get typing for your API responses in an easy way.
 
-This is currently very basic feature wise. It is also tightly coupled to the Symfony Framework, but could be extracted. Feel free to build on this or use as inspiration to build something completely different.
+This is currently tightly coupled to the Symfony Framework, but could be extracted. Feel free to build on this or use as inspiration to build something completely different.
 
 ## Installation
 
