@@ -19,7 +19,7 @@ class GenerateCommand extends ContainerAwareCommand
     {
         $this
             ->setName('typescript:generate-interfaces')
-            ->setDescription('Greet someone')
+            ->setDescription('Generate TypeScript interfaces from PHP classes in a directory')
             ->addArgument(
                 'fromDir',
                 InputArgument::REQUIRED,
