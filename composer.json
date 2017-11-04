@@ -1,0 +1,16 @@
+{
+    "name": "janit/typescript-generator-bundle",
+    "description": "A Symfony Bundle that provides a command to generate TypeScript interfaces from PHP classes",
+    "type": "symfony-bundle",
+    "require-dev": {
+        "nikic/php-parser": "^3.1.0"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jani Tarvainen",
+            "email": "janit@iki.fi"
+        }
+    ],
+    "require": {}
+}
