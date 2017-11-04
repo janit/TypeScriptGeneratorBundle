@@ -19,6 +19,8 @@ class ParserInterface
         $result = "interface {$this->name} {\n";
         $result .= implode(",\n", array_map(function ($p) { return "  " . (string)$p;}, $this->properties));
         $result .= "\n}";
+        $result .= "\n";
+        $result .= "declare var {$this->name}: {$this->name};\n";
         return $result;
     }
 }
