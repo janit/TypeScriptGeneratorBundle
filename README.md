@@ -83,15 +83,3 @@ declare var Person: Person;
 ```
 
 If you provide another argument (`toDir`) you can change the target directory to something else.
-
-## Using TypeScript interfaces
-
-In your code editor you can have access to the generated interfaces by adding the following reference:
-
-```
-/// <reference path="./Person.d.ts" />
-```
-
-This way you can then access the structure bridged from your PHP classes in your TypeScript/JavaScript code as shown underneath:
-
-<img>
