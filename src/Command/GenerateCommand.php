@@ -3,15 +3,14 @@
 namespace Macavity\TypeScriptGeneratorBundle\Command;
 
 use Macavity\TypeScriptGeneratorBundle\Parser\Visitor;
+use PhpParser\NodeTraverser;
+use PhpParser\ParserFactory;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Finder\Finder;
-use PhpParser\ParserFactory;
-use PhpParser\NodeTraverser;
 
 class GenerateCommand extends Command
 {
@@ -28,9 +27,8 @@ class GenerateCommand extends Command
             ->addArgument(
                 'toDir',
                 InputArgument::OPTIONAL,
-                'Where to export generated classes'
-            )
-        ;
+                'Where to export generated classes to'
+            );
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
@@ -40,7 +38,7 @@ class GenerateCommand extends Command
         $fromDir = $input->getArgument('fromDir');
         $toDir = $input->getArgument('toDir');
 
-        if(!$toDir){
+        if (!$toDir) {
             $toDir = 'typescript';
 
         }
@@ -50,7 +48,7 @@ class GenerateCommand extends Command
 
         $fs = new Filesystem();
         $finder = new Finder();
-        $finder->files('*.php')->in( $projectDir . '/' . $fromDir);
+        $finder->files('*.php')->in($projectDir . '/' . $fromDir);
 
         foreach ($finder as $file) {
 
@@ -63,14 +61,14 @@ class GenerateCommand extends Command
                 $stmts = $parser->parse($code);
                 $stmts = $traverser->traverse($stmts);
 
-                if($visitor->getOutput()){
-                    $targetFile = $toDir . '/' . str_replace( '.php','.d.ts', $file->getFilename());
-                    $fs->dumpFile($targetFile,$visitor->getOutput());
+                if ($visitor->getOutput()) {
+                    $targetFile = $toDir . '/' . str_replace('.php', '.d.ts', $file->getFilename());
+                    $fs->dumpFile($targetFile, $visitor->getOutput());
                     $output->writeln('created interface ' . $targetFile);
                 }
 
             } catch (\ParseError $e) {
-                $output->writeln('Parse error: ' .$e->getMessage());
+                $output->writeln('Parse error: ' . $e->getMessage());
             }
 
         }

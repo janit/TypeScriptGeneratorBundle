@@ -6,21 +6,27 @@ class ParserInterface
 {
     /** @var string */
     public $name;
-    /** @var Property_[] */
+
+    /** @var Property[] */
     public $properties = [];
 
     public function __construct($name)
     {
-        $this->name = $name;
+        // TODO Make prefix and suffix configurable
+        $this->name = 'I'.$name;
     }
 
     public function __toString()
     {
-        $result = "interface {$this->name} {\n";
-        $result .= implode(",\n", array_map(function ($p) { return "  " . (string)$p;}, $this->properties));
-        $result .= "\n}";
-        $result .= "\n";
-        $result .= "declare var {$this->name}: {$this->name};\n";
+        $interfaceBody = implode(",\n", array_map(function (Property $p) {
+            return "  " . $p->__toString();
+        }, $this->properties));
+
+        $result = <<< HEREDOC
+interface {$this->name} {
+    {$interfaceBody}
+}
+HEREDOC;
         return $result;
     }
 }
