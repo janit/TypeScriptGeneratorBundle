@@ -1,6 +1,6 @@
 <?php
 
-namespace Janit\TypeScriptGeneratorBundle\Entity;
+namespace Macavity\TypeScriptGeneratorBundle\Entity;
 
 /**
  * @TypeScriptMe

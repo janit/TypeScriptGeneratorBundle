@@ -12,13 +12,13 @@ This is currently tightly coupled to the Symfony Framework, but could be extract
 As a Symfony bundle you'll need to start by add the package to your project with composer:
 
 ```
-$ composer req janit/typescript-generator-bundle
+$ composer req macavity/typescript-generator-bundle
 ```
 
 After this you'll need to activate the bundle in your `app/AppKernel.php` file:
 
 ```
-new Janit\TypeScriptGeneratorBundle\TypeScriptGeneratorBundle()
+new Macavity\TypeScriptGeneratorBundle\TypeScriptGeneratorBundle()
 ```
 
 Once this is done you should have the added command in place in your console and you can run:
@@ -73,12 +73,11 @@ $ php bin/console typescript:generate-interfaces src/
 This will generate the following file `typescript/Person.d.ts` with the following content:
 
 ```
-interface Person {
+interface IPerson {
   firstName: string,
   lastName: string,
   age: number
 }
-declare var Person: Person;
 
 ```
 

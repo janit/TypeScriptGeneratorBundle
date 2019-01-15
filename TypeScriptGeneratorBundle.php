@@ -1,6 +1,6 @@
 <?php
 
-namespace Janit\TypeScriptGeneratorBundle;
+namespace Macavity\TypeScriptGeneratorBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 

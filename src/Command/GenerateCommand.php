@@ -1,9 +1,9 @@
 <?php
 
-namespace Janit\TypeScriptGeneratorBundle\Command;
+namespace Macavity\TypeScriptGeneratorBundle\Command;
 
-use Janit\TypeScriptGeneratorBundle\Parser\Visitor;
-use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
+use Macavity\TypeScriptGeneratorBundle\Parser\Visitor;
+use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
@@ -13,7 +13,7 @@ use Symfony\Component\Finder\Finder;
 use PhpParser\ParserFactory;
 use PhpParser\NodeTraverser;
 
-class GenerateCommand extends ContainerAwareCommand
+class GenerateCommand extends Command
 {
     protected function configure()
     {

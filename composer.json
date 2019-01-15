@@ -1,18 +1,28 @@
 {
-    "name": "janit/typescript-generator-bundle",
+    "name": "macavity/typescript-generator-bundle",
     "description": "A Symfony Bundle that provides a command to generate TypeScript interfaces from PHP classes",
     "type": "symfony-bundle",
     "autoload": {
-        "psr-4": { "Janit\\TypeScriptGeneratorBundle\\": "" }
+        "psr-4": { "Macavity\\TypeScriptGeneratorBundle\\": "" },
+        "psr-4": { "Macavity\\TypeScriptGeneratorBundle\\Tests\\": "tests" }
     },
     "license": "MIT",
     "authors": [
         {
             "name": "Jani Tarvainen",
             "email": "janit@iki.fi"
+        },
+        {
+            "name": "Alexander Pape",
+            "email": "a.pape@paneon.de"
         }
     ],
     "require": {
-        "nikic/php-parser": "^3.1.0"
+        "nikic/php-parser": "^3.1.0|^4.0.0"
+    },
+    "require-dev": {
+        "symfony/console": "^4.2",
+        "symfony/filesystem": "^4.2",
+        "symfony/finder": "^4.2"
     }
 }

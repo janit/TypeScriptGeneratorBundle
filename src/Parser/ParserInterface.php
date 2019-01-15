@@ -1,6 +1,6 @@
 <?php
 
-namespace Janit\TypeScriptGeneratorBundle\Parser;
+namespace Macavity\TypeScriptGeneratorBundle\Parser;
 
 class ParserInterface
 {
