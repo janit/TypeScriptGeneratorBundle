@@ -3,22 +3,38 @@
 namespace Janit\TypeScriptGeneratorBundle\Command;
 
 use Janit\TypeScriptGeneratorBundle\Parser\Visitor;
-use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
-use Symfony\Component\Console\Input\InputArgument;
+use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Input\InputOption;
+use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Finder\Finder;
 use PhpParser\ParserFactory;
 use PhpParser\NodeTraverser;
 
-class GenerateCommand extends ContainerAwareCommand
+class GenerateCommand extends Command
 {
-    protected function configure()
+	protected static $defaultName = 'typescript:generate-interfaces';
+
+	/**
+	 * @var ParameterBagInterface
+	 */
+	private $parameterBag;
+
+	/**
+	 * @param string|null $name The name of the command; passing null means it must be set in configure()
+	 * @param ParameterBagInterface $parameterBag
+	 */
+	public function __construct(string $name = null, ParameterBagInterface $parameterBag = null)
+	{
+		parent::__construct($name);
+		$this->parameterBag = $parameterBag;
+	}
+
+	protected function configure()
     {
         $this
-            ->setName('typescript:generate-interfaces')
             ->setDescription('Generate TypeScript interfaces from PHP classes in a directory')
             ->addArgument(
                 'fromDir',
@@ -35,14 +51,12 @@ class GenerateCommand extends ContainerAwareCommand
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-
-        $projectDir = $this->getContainer()->get('kernel')->getProjectDir();
+        $projectDir = $this->parameterBag->get('kernel.project_dir');
         $fromDir = $input->getArgument('fromDir');
         $toDir = $input->getArgument('toDir');
 
         if(!$toDir){
             $toDir = 'typescript';
-
         }
 
         $parser = (new ParserFactory)->create(ParserFactory::PREFER_PHP7);
@@ -75,5 +89,6 @@ class GenerateCommand extends ContainerAwareCommand
 
         }
 
+	    return Command::SUCCESS;
     }
 }
